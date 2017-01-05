@@ -48,4 +48,4 @@ deployment:
 #      - docker push smizy/presto:${TAG_MAJOR}
       - docker push smizy/presto:latest
       - docker logout
-      - curl -X POST 'https://hooks.microbadger.com/images/smizy/presto/B67xdho_HXXeXxVkUjT0TlgEmjk='
+      - curl -X POST 'https://hooks.microbadger.com/images/smizy/presto/Nnw1Z-4ZWKaJKNvvwVOame1-0pw='

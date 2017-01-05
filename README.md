@@ -7,16 +7,13 @@ Presto docker image based on alpine
 
 ```
 # network 
-$ docker network create vnet
+docker network create vnet
 
 # load docker env as needed
-$ eval $(docker-machine env default)
+eval $(docker-machine env default)
 
 # run containers
-$ docker-compose up -d
-Creating coordinator-1
-Creating worker-2
-Creating worker-1
+docker-compose up -d
 
 $ docker-compose ps
     Name                 Command            State           Ports          
@@ -26,7 +23,7 @@ worker-1        entrypoint.sh worker        Up
 worker-2        entrypoint.sh worker        Up
 
 # Querying JMX
-$ docker-compose exec worker-1 presto --server coordinator-1.vnet:8080 
+docker-compose exec worker-1 presto --server coordinator-1.vnet:8080 
 
 presto> SHOW TABLES FROM jmx.current;
                                         Table
@@ -64,10 +61,10 @@ Splits: 4 total, 4 done (100.00%)
 presto> exit
 
 # CLUSTER OVERVIEW UI
-$ open http://$(docker-machine ip default):8080
+open http://$(docker-machine ip default):8080
 
 # cleanup
-$ docker-compose stop
-$ docker-compose rm -fv
+docker-compose stop
+docker-compose rm -fv
 ```
 
