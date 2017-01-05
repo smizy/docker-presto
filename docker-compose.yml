@@ -5,37 +5,40 @@ services:
     container_name: coordinator-1
     networks: ["vnet"]
     hostname: coordinator-1.vnet
-    image: smizy/presto:0.144.8-alpine
+    image: smizy/presto:0.161-alpine
     ports: 
       - 8080:8080
     environment:
       - PRESTO_JVM_MAX_HEAP=512M
       - PRESTO_QUERY_MAX_MEMORY=1GB
       - PRESTO_QUERY_MAX_MEMORY_PER_NODE=256MB
+      - TERM=xterm
     command: coordinator
       
   worker-1:
     container_name: worker-1
     networks: ["vnet"]
     hostname: worker-1.vnet
-    image: smizy/presto:0.144.8-alpine
+    image: smizy/presto:0.161-alpine
     depends_on: ["coordinator-1"]
     environment:
       - PRESTO_JVM_MAX_HEAP=512M
       - PRESTO_QUERY_MAX_MEMORY=1GB
       - PRESTO_QUERY_MAX_MEMORY_PER_NODE=256MB
+      - TERM=xterm      
     command: worker
 
   worker-2:
     container_name: worker-2
     networks: ["vnet"]
     hostname: worker-2.vnet
-    image: smizy/presto:0.144.8-alpine
+    image: smizy/presto:0.161-alpine
     depends_on: ["coordinator-1"]
     environment:
       - PRESTO_JVM_MAX_HEAP=512M
       - PRESTO_QUERY_MAX_MEMORY=1GB
       - PRESTO_QUERY_MAX_MEMORY_PER_NODE=256MB
+      - TERM=xterm      
     command: worker
 
 networks:
