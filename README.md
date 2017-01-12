@@ -1,6 +1,6 @@
 # docker-presto
-[![](https://images.microbadger.com/badges/image/smizy/presto:0.162-alpine.svg)](http://microbadger.com/images/smizy/presto:0.162-alpine "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/smizy/presto:0.162-alpine.svg)](http://microbadger.com/images/smizy/presto:0.162-alpine "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/smizy/presto:0.163-alpine.svg)](http://microbadger.com/images/smizy/presto:0.163-alpine "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/smizy/presto:0.163-alpine.svg)](http://microbadger.com/images/smizy/presto:0.163-alpine "Get your own version badge on microbadger.com")
 [![CircleCI](https://circleci.com/gh/smizy/docker-presto.svg?style=svg&circle-token=3d2c669370e5ba45f558a1a4c8c8fdbd4125ab7f)](https://circleci.com/gh/smizy/docker-presto)
 
 Presto docker image based on alpine
