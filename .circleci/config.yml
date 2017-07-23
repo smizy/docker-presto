@@ -1,0 +1,58 @@
+version: 2
+jobs:
+  build:
+    working_directory: /stage
+    
+    docker:
+      - image: docker:17.05.0-ce-git
+
+    environment:
+      VERSION: "0.180"
+      # BUILD_DATE: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+      VCS_REF: ${CIRCLE_SHA1}
+      TAG: ${VERSION}-alpine
+      # TAG_MINOR: ${VERSION%.*}-alpine
+      # TAG_MAJOR: ${VERSION%%.*}-alpine 
+      BATS_VER: "0.4.0"  
+
+    steps:
+      - checkout
+      - setup_remote_docker
+        version: 17.05.0-ce
+
+      - run:
+        name: install dependencies - bats
+        command: |
+          if [[ ! -e /stage/bats_v${BATS_VER}.tar.gz ]]; then 
+            curl -sSL -o /stage/bats_v${BATS_VER}.tar.gz https://github.com/sstephenson/bats/archive/v${BATS_VER}.tar.gz
+          fi
+          tar -xf /stage/bats_v${BATS_VER}.tar.gz
+          bats-${BATS_VER}/install.sh /usr/local
+
+      - run:
+        name: docker client and remote info
+        command: |
+          docker version
+          docker info
+
+      - run:
+        name: docker image build
+        command: make all
+
+      - run:
+        name: test
+        command: |
+          docker inspect smizy/presto:${TAG}
+          make test
+
+      - run:
+        nmae: docker image push
+        command: |
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker image tag smizy/presto:${TAG} smizy/presto
+            docker image push smizy/presto:${TAG}
+            docker image push smizy/presto:latest
+            docker logout
+            curl -X POST 'https://hooks.microbadger.com/images/smizy/presto/Nnw1Z-4ZWKaJKNvvwVOame1-0pw='
+          fi
