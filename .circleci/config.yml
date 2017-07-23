@@ -22,12 +22,16 @@ jobs:
           version: 17.05.0-ce
 
       - run:
-          name: install dependencies - bats
+          name: install dependencies - lib
           command: |
             apk --no-cache add \
               bash \
-              curl
-            
+              curl \
+              make
+
+      - run:
+          name: install dependencies - bats
+          command: |
             dir=${CIRCLE_WORKING_DIRECTORY}
             mkdir -p ${dir}
 
