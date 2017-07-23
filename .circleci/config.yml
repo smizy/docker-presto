@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /stage
+    working_directory: ~/deps
 
     docker:
       - image: docker:17.05.0-ce-git
@@ -24,10 +24,15 @@ jobs:
       - run:
           name: install dependencies - bats
           command: |
-            if [[ ! -e /stage/bats_v${BATS_VER}.tar.gz ]]; then 
-              curl -sSL -o /stage/bats_v${BATS_VER}.tar.gz https://github.com/sstephenson/bats/archive/v${BATS_VER}.tar.gz
+            apk --no-cache add curl
+            
+            dir=${CIRCLE_WORKING_DIRECTORY}
+
+            if [[ ! -e ${dir}/bats_v${BATS_VER}.tar.gz ]]; then 
+              curl -sSL -o ${dir}/bats_v${BATS_VER}.tar.gz https://github.com/sstephenson/bats/archive/v${BATS_VER}.tar.gz
             fi
-            tar -xf /stage/bats_v${BATS_VER}.tar.gz
+            
+            tar -xf ${dir}/bats_v${BATS_VER}.tar.gz
             bats-${BATS_VER}/install.sh /usr/local
 
       - run:
