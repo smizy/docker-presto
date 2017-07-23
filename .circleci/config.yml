@@ -27,7 +27,8 @@ jobs:
             apk --no-cache add curl
             
             dir=${CIRCLE_WORKING_DIRECTORY}
-
+            mkdir -p ${dir}
+            
             if [[ ! -e ${dir}/bats_v${BATS_VER}.tar.gz ]]; then 
               curl -sSL -o ${dir}/bats_v${BATS_VER}.tar.gz https://github.com/sstephenson/bats/archive/v${BATS_VER}.tar.gz
             fi
