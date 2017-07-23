@@ -10,7 +10,7 @@ jobs:
       VERSION: "0.180"
       # BUILD_DATE: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
       VCS_REF: ${CIRCLE_SHA1}
-      TAG: ${VERSION}-alpine
+      # TAG: ${VERSION}-alpine
       # TAG_MINOR: ${VERSION%.*}-alpine
       # TAG_MAJOR: ${VERSION%%.*}-alpine 
       BATS_VER: "0.4.0"  
@@ -20,6 +20,13 @@ jobs:
 
       - setup_remote_docker:
           version: 17.05.0-ce
+
+      - run:
+          name: set TAG vars
+          command: |
+            export TAG=${VERSION}-alpine
+            export TAG_MINOR=${VERSION%.*}-alpine
+            export TAG_MAJOR=${VERSION%%.*}-alpine           
 
       - run:
           name: install dependencies - lib
