@@ -4,11 +4,11 @@ jobs:
     working_directory: ~/deps
 
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: docker:17.06.0-ce-git
 
     environment:
-      VERSION: "0.182"
-      TAG: "0.182-alpine"
+      VERSION: "0.183"
+      TAG: "0.183-alpine"
       # TAG: ${VERSION}-alpine
       # TAG_MINOR: ${VERSION%.*}-alpine
       # TAG_MAJOR: ${VERSION%%.*}-alpine 
@@ -20,7 +20,7 @@ jobs:
       - checkout
 
       - setup_remote_docker:
-          version: 17.05.0-ce
+          version: 17.06.0-ce
 
       # - run:
       #     name: set TAG vars
@@ -35,6 +35,7 @@ jobs:
             apk --no-cache add \
               bash \
               curl \
+              curl-dev \
               make
 
       - run:
