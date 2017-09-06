@@ -1,4 +1,4 @@
-FROM smizy/hadoop-base:2.7.3-alpine as hadoop-base
+FROM smizy/hadoop-base:2.7.4-alpine as hadoop-base
 
 # ----------
 
