@@ -68,7 +68,7 @@ jobs:
             make test
 
       - run:
-          nmae: docker image push
+          name: docker image push
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u $DOCKER_USER -p $DOCKER_PASS
