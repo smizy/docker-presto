@@ -59,20 +59,16 @@ RUN set -x \
     && apk --no-cache add --virtual .builddeps \
         openjdk8 \
         zip \
-
     ## presto-server
     && wget -q -O - https://repo1.maven.org/maven2/com/facebook/presto/presto-server/${PRESTO_VERSION}/presto-server-${PRESTO_VERSION}.tar.gz \
         | tar -xzf - -C /usr/local  \
-
     ## presto-client
     && wget -q -O /usr/local/bin/presto https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/${PRESTO_VERSION}/presto-cli-${PRESTO_VERSION}-executable.jar \
     && chmod +x /usr/local/bin/presto \
-
     ## use alpine hadoop nativelib
     && zip -d ${PRESTO_HOME}/plugin/hive-hadoop2/hadoop-apache2-*.jar nativelib/* \
     && cp -L /usr/lib/libsnappy.so.1 /tmp/nativelib/Linux-amd64/libsnappy.so \
     && jar -uvf ${PRESTO_HOME}/plugin/hive-hadoop2/hadoop-apache2-*.jar -C /tmp nativelib \
-
     ## user/dir/permmsion
     && adduser -D  -g '' -s /sbin/nologin -u 1000 docker \
     && adduser -D  -g '' -s /sbin/nologin presto \
@@ -83,8 +79,7 @@ RUN set -x \
     && chown -R presto:presto \
         ${PRESTO_HOME} \
         ${PRESTO_LOG_DIR} \
-        ${PRESTO_NODE_DATA_DIR} \
-    
+        ${PRESTO_NODE_DATA_DIR} \    
     ## cleanup
     && rm -rf /tmp/nativelib \
     && apk del .builddeps 
