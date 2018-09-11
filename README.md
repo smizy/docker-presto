@@ -1,11 +1,11 @@
 # docker-presto
-[![](https://images.microbadger.com/badges/image/smizy/presto:0.209-alpine.svg)](http://microbadger.com/images/smizy/presto:0.209-alpine "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/smizy/presto:0.209-alpine.svg)](http://microbadger.com/images/smizy/presto:0.209-alpine "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/smizy/presto:0.210-alpine.svg)](http://microbadger.com/images/smizy/presto:0.210-alpine "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/smizy/presto:0.210-alpine.svg)](http://microbadger.com/images/smizy/presto:0.210-alpine "Get your own version badge on microbadger.com")
 [![CircleCI](https://circleci.com/gh/smizy/docker-presto.svg?style=svg&circle-token=3d2c669370e5ba45f558a1a4c8c8fdbd4125ab7f)](https://circleci.com/gh/smizy/docker-presto)
 
 Presto docker image based on alpine
 
-* Hadoop nativelib in `plugin/hive-hadoop2/hadoop-apache2-2.7.4-1.jar` is replaced with alpine built lib
+* Hadoop nativelib in `plugin/hive-hadoop2/hadoop-apache2-2.7.4-3.jar` is replaced with alpine built lib
 
 ```
 # network 
