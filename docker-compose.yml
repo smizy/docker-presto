@@ -5,7 +5,7 @@ services:
     container_name: coordinator-1
     networks: ["vnet"]
     hostname: coordinator-1.vnet
-    image: smizy/presto:0.213-alpine
+    image: smizy/presto:0.214-alpine
     ports: 
       - 8080:8080
     environment:
@@ -19,7 +19,7 @@ services:
     container_name: worker-1
     networks: ["vnet"]
     hostname: worker-1.vnet
-    image: smizy/presto:0.213-alpine
+    image: smizy/presto:0.214-alpine
     depends_on: ["coordinator-1"]
     environment:
       - PRESTO_JVM_MAX_HEAP=512M
@@ -32,7 +32,7 @@ services:
     container_name: worker-2
     networks: ["vnet"]
     hostname: worker-2.vnet
-    image: smizy/presto:0.213-alpine
+    image: smizy/presto:0.214-alpine
     depends_on: ["coordinator-1"]
     environment:
       - PRESTO_JVM_MAX_HEAP=512M
