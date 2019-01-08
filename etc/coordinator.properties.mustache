@@ -3,5 +3,7 @@ node-scheduler.include-coordinator=false
 http-server.http.port=8080
 query.max-memory={{PRESTO_QUERY_MAX_MEMORY}}
 query.max-memory-per-node={{PRESTO_QUERY_MAX_MEMORY_PER_NODE}}
+query.max-total-memory-per-node={{PRESTO_QUERY_MAX_TOTAL_MEMORY_PER_NODE}}
+memory.heap-headroom-per-node={{PRESTO_MEMORY_HEAP_HEADROOM_PER_NODE}}
 discovery-server.enabled=true
 discovery.uri={{PRESTO_DISCOVERY_URI}}
