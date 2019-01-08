@@ -5,7 +5,7 @@
 
 Presto docker image based on alpine
 
-* Hadoop nativelib in `plugin/hive-hadoop2/hadoop-apache2-2.7.4-3.jar` is replaced with alpine built lib
+* Hadoop nativelib in `plugin/hive-hadoop2/hadoop-apache2-2.7.4-5.jar` is replaced with alpine built lib
 
 ```
 # network 
@@ -39,9 +39,9 @@ presto> SHOW TABLES FROM jmx.current;
 presto> SELECT node, vmname, vmversion FROM jmx.current."java.lang:type=runtime";
                  node                 |          vmname          | vmversion  
 --------------------------------------+--------------------------+------------
- 0cac4a52-5ce8-4962-90f9-56aa5dde23fc | OpenJDK 64-Bit Server VM | 25.111-b14 
- 24cc4bf5-453d-48f6-8084-9c1e7af133fa | OpenJDK 64-Bit Server VM | 25.111-b14 
- fffa7505-a86d-4613-9f20-f5e779366fbd | OpenJDK 64-Bit Server VM | 25.111-b14 
+ 0cac4a52-5ce8-4962-90f9-56aa5dde23fc | OpenJDK 64-Bit Server VM | 25.181-b13 
+ 24cc4bf5-453d-48f6-8084-9c1e7af133fa | OpenJDK 64-Bit Server VM | 25.181-b13 
+ fffa7505-a86d-4613-9f20-f5e779366fbd | OpenJDK 64-Bit Server VM | 25.181-b13 
 (3 rows)
 
 Query 20170105_045632_00017_ep8ih, FINISHED, 3 nodes
@@ -51,9 +51,9 @@ Splits: 4 total, 4 done (100.00%)
 presto> SELECT openfiledescriptorcount, maxfiledescriptorcount FROM jmx.current."java.lang:type=operatingsystem";
  openfiledescriptorcount | maxfiledescriptorcount 
 -------------------------+------------------------
-                     969 |                1048576 
-                    1018 |                1048576 
-                     967 |                1048576 
+                    1222 |                1048576 
+                    1231 |                1048576 
+                    1277 |                1048576 
 (3 rows)
 
 Query 20170105_045816_00019_ep8ih, FINISHED, 3 nodes

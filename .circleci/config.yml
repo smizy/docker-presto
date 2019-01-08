@@ -8,7 +8,7 @@ jobs:
 
     environment:
       VERSION: "0.215"
-      TAG: "0.215-alpine"
+      TAG: "0.215-alpine-r1"
       # TAG: ${VERSION}-alpine
       # TAG_MINOR: ${VERSION%.*}-alpine
       # TAG_MAJOR: ${VERSION%%.*}-alpine 
@@ -70,11 +70,13 @@ jobs:
       - run:
           name: docker image push
           command: |
+            
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker image tag smizy/presto:${TAG} smizy/presto
+            docker image push smizy/presto:${TAG}
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker image tag smizy/presto:${TAG} smizy/presto
-              docker image push smizy/presto:${TAG}
               docker image push smizy/presto:latest
-              docker logout
-              curl -X POST 'https://hooks.microbadger.com/images/smizy/presto/Nnw1Z-4ZWKaJKNvvwVOame1-0pw='
             fi
+            docker logout
+            curl -X POST 'https://hooks.microbadger.com/images/smizy/presto/Nnw1Z-4ZWKaJKNvvwVOame1-0pw='
+            
