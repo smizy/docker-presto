@@ -42,6 +42,7 @@ RUN set -x \
     && apk update \
     && apk --no-cache add \
         bash \
+        java-jansi-native \
         less \
         openjdk8-jre \
         python \
