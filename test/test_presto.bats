@@ -3,5 +3,5 @@
   echo "${output}" 
 
   [ $status -eq 0 ]
-  [ "${lines[0]}" = "Presto CLI ${VERSION}" ]
+  [[ "${lines[0]}" =~ "Presto CLI ${VERSION}" ]]
 }
